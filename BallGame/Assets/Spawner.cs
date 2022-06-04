@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float maxTime = 10;
-    private float timer = 0;
+    public float maxTime = 2f;
+    private float timer = 0f;
     public GameObject pipe;
     public float lenght;
-
+    
     void Start()
     {
         GameObject newpipe = Instantiate(pipe);
@@ -26,6 +26,20 @@ public class Spawner : MonoBehaviour
             timer = 0;
         }
         timer += Time.deltaTime;
+
+        
+            Invoke("speed", 5);
+       
+        
+        
+
+    }
+    
+    public void speed()
+    {
+        
+            maxTime = (maxTime - 0.0001f);
+        
     }
 }
 

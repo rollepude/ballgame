@@ -10,12 +10,6 @@ public class Movement : MonoBehaviour
     public TextMeshProUGUI Score;
     int score = 0;
 
-
-    [SerializeField] private float speed;
-
-
-
-
     public float moveSpeed;
 
 
@@ -41,7 +35,7 @@ public class Movement : MonoBehaviour
             raja = true;
         }
 
-        if (collisionInfo.collider.name == "vasenraja")
+       if (collisionInfo.collider.name == "vasenraja")
         {
             
             vasen = true;
@@ -62,28 +56,28 @@ public class Movement : MonoBehaviour
         oikea = false;
     }
     void Update()
+    {
+
+
+
+
+
+        if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && oikea == true)
         {
 
+            theRB.velocity = new Vector2(-moveSpeed, theRB.velocity.y);
 
-
-
-
-            if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && oikea == true)
-            {
-
-                theRB.velocity = new Vector2(-moveSpeed, theRB.velocity.y);
-
-            }
-
-
-
-            else if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && vasen == true)
-            {
-
-                theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
-
-            }
         }
+
+
+
+        else if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && vasen == true)
+        {
+
+            theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
+
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("coin"))
@@ -92,7 +86,7 @@ public class Movement : MonoBehaviour
             Debug.Log("1 piste");
             score++;
             Score.text = score.ToString();
-            
+
         }
     }
 
