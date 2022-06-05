@@ -27,11 +27,11 @@ public class Spawner : MonoBehaviour
         }
         timer += Time.deltaTime;
 
-        
-            Invoke("speed", 5);
-       
-        
-        
+
+        Invoke("speed", 5);
+
+
+
 
     }
     

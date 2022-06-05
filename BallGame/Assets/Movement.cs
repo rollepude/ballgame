@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     public float moveSpeed;
 
-
+    public GameObject PauseMenu;
     public KeyCode hiiri;
     public KeyCode space;
     public AudioSource coin‰‰ni;
@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     bool raja = false;
     bool vasen = false;
     bool oikea = false;
+    bool pause = false;
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
@@ -58,11 +59,18 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
+        if(PauseMenu.activeInHierarchy)
+        {
+            pause = true;
+        }
+        else
+        {
+            pause = false;
+        }
 
 
 
-
-        if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && oikea == true)
+        if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && oikea == true && pause == false)
         {
 
             theRB.velocity = new Vector2(-moveSpeed, theRB.velocity.y);
@@ -71,7 +79,7 @@ public class Movement : MonoBehaviour
 
 
 
-        else if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && vasen == true)
+        else if (Input.GetKey(hiiri) | Input.GetKey(space) && raja == true && vasen == true && pause == false)
         {
 
             theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
